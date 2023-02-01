@@ -17,3 +17,7 @@ func NewClient(key, dataPanelUrl string) *Client {
 func (c *Client) GetClient() *analytics.Client {
 	return c.Client
 }
+
+func (c *Client) Enqueue(event analytics.Event) error {
+	return c.Client.Enqueue(event)
+}
