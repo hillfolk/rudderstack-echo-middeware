@@ -1,13 +1,15 @@
-module rudderstack-echo-middleware/m
+module github/hillfolk/rudderstack-echo-middleware
 
 go 1.19
 
-require github.com/rudderlabs/analytics-go/v4 v4.1.0
+require (
+	github.com/labstack/echo/v4 v4.10.0
+	github.com/rudderlabs/analytics-go/v4 v4.1.0
+)
 
 require (
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/kr/text v0.2.0 // indirect
-	github.com/labstack/echo/v4 v4.10.0 // indirect
 	github.com/labstack/gommon v0.4.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.16 // indirect

@@ -2,7 +2,7 @@ package main
 
 import (
 	"net/http"
-	"github.com/hillfolk/rudderstack_echo_middeware"
+	"github.com/hillfolk/rudderstack-echo-middleware"
 	"github.com/labstack/echo/v4"
 )
 
