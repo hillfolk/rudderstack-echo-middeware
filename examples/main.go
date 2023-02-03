@@ -12,7 +12,10 @@ func main() {
 	client := rudder.NewClient("2KEB8SmnueBBHxM71ZiumKLMRZ7", "https://illuminarefzr.dataplane.rudderstack.com")
 	e.Use(rudder.ContextRudderStack(client))
 	e.GET("/", func(c echo.Context) error {
-		client := c.Get(rudder.ContextRudderStackName).(rudder.IClient)
+		client, ok := c.Request().Context().Value(rudder.ContextRudderStackName).(rudder.IClient)
+		if !ok {
+			return c.String(http.StatusBadRequest, "Bad Request")
+		}
 		client.Enqueue(analytics.Track{
 			UserId: "1hKOmRA4GRlm",
 			Event:  "Test Event",
