@@ -4,25 +4,30 @@ import (
 	"github.com/rudderlabs/analytics-go/v4"
 )
 
+type IClient interface {
+	GetClient() analytics.Client
+	Enqueue(msg analytics.Message) error
+	Close() error
+}
 type Client struct {
-	RudderClient analytics.Client
+	rudderClient analytics.Client
 }
 
-func NewClient(key, dataPanelUrl string) *Client {
+func NewClient(key, dataPanelUrl string) IClient {
 	client := analytics.New(key, dataPanelUrl)
 	return &Client{
-		RudderClient: client,
+		rudderClient: client,
 	}
 }
 
 func (c *Client) GetClient() analytics.Client {
-	return c.RudderClient
+	return c.rudderClient
 }
 
 func (c *Client) Enqueue(msg analytics.Message) error {
-	return c.RudderClient.Enqueue(msg)
+	return c.rudderClient.Enqueue(msg)
 }
 
 func (c *Client) Close() error {
-	return c.RudderClient.Close()
+	return c.rudderClient.Close()
 }

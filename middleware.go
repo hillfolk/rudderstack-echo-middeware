@@ -7,8 +7,7 @@ import (
 
 var ContextRudderStackName = "RUDDERSTACK" // Path: middleware.go
 
-func ContextRudderSatck(client *Client) echo.MiddlewareFunc {
-
+func ContextRudderStack(client *Client) echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			req := c.Request()
